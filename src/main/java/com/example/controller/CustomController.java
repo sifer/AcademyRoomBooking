@@ -33,56 +33,57 @@ public class CustomController {
     @Autowired
     DataSource dataSource;
 
-    @GetMapping("/foundation")
+    @GetMapping("/booking")
     public ModelAndView foundation() {
         ModelAndView mModel = new ModelAndView("booking/index");
         return mModel;
     }
 
-    @GetMapping("/booking/")
+    @GetMapping("/sandbox")
     public ModelAndView modelSec() {
-        ModelAndView mModel = new ModelAndView("booking/weekview")
+        ModelAndView mModel = new ModelAndView("booking/sandbox")
                 .addObject("rooms", repository.getRooms());
         return mModel;
     }
 
-    @GetMapping("/login/login")
-    public void loginPage(){
-        return;
+    @GetMapping("/login")
+    public ModelAndView loginPage() {
+        return new ModelAndView("/login/login");
     }
+
     @PostMapping("/login/login")
-    public String loginPage(String username, String password) throws SQLException {
-        try{
+    public ModelAndView loginPage(String username, String password) throws SQLException {
+        ModelAndView model;
+        try {
             Encryptor encryptor = new Encryptor();
             String passwordEncrypted = encryptor.MD5(password);
             Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement("SELECT UserName, [Password] FROM [User] WHERE UserName = ? AND [Password]=?");
-            preparedStatement.setString(1,username);
-            preparedStatement.setString(2,passwordEncrypted);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, passwordEncrypted);
             ResultSet rs = preparedStatement.executeQuery();
             String userNameChecked = null;
             String passwordChecked = null;
-            while(rs.next()){
+            while (rs.next()) {
                 userNameChecked = rs.getString("UserName");
                 passwordChecked = rs.getString("Password");
             }
 
-            if(userNameChecked != null && passwordChecked != null & userNameChecked.trim().equalsIgnoreCase(username) && passwordChecked.equalsIgnoreCase(passwordEncrypted)){
+            if (userNameChecked != null && passwordChecked != null & userNameChecked.trim().equalsIgnoreCase(username) && passwordChecked.equalsIgnoreCase(passwordEncrypted)) {
                 //TODO Return booking-page
                 System.out.println("correct pass");
-                return "/booking/";
-            }
-            else{
+                return new ModelAndView("/booking/index");
+            } else {
                 //TODO Return login try-again
                 System.out.println("wrong login");
-                return "/login/login";
+                return new ModelAndView("/login/login").addObject("error", "Wrong username or password.");
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
-    return "/login/login";
+        return new ModelAndView("/login/login");
     }
 
     @GetMapping("/room/")
