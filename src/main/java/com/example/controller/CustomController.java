@@ -46,10 +46,15 @@ public class CustomController {
         return mModel;
     }
 
+    /*
     @GetMapping("/login")
     public ModelAndView loginPage() {
         return new ModelAndView("/login/login");
     }
+    */
+
+    @GetMapping("/login/login")
+    public void loginPage() { return;}
 
     @PostMapping("/login/login")
     public ModelAndView loginPage(String username, String password) throws SQLException {
