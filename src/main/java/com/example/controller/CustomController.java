@@ -60,7 +60,7 @@ public class CustomController {
 
     @GetMapping("/booking")
     public ModelAndView foundation() {
-        ModelAndView mModel = new ModelAndView("booking/index");
+        ModelAndView mModel = new ModelAndView("booking/index").addObject("bookings", bookings);
         return mModel;
     }
 

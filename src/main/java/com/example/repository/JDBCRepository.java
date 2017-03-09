@@ -54,9 +54,16 @@ public class JDBCRepository implements IRepository {
     public ArrayList<Booking> getBookings() {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT BookingID, StartTime, EndTime, Room_ID, User_ID FROM Booking")) {
+             ResultSet rs = stmt.executeQuery("SELECT BookingID, StartTime, EndTime, Room_ID, User_ID FROM Booking ORDER BY StartTime")) {
             ArrayList<Booking> bookings = new ArrayList<>();
             while (rs.next()) bookings.add(rsBookings(rs));
+            if(bookings.get(0)!=null){
+                for(int i=0; i<bookings.size(); i++){
+                    if(i>0 && bookings.get(i).getDayOfWeek()==bookings.get(i-1).getDayOfWeek()){
+                        bookings.get(i).setFixedMargin(bookings.get(i).getFixedMargin()-bookings.get(i-1).getFixedMargin()-bookings.get(i-1).getDifferenceMinutes());
+                    }
+                }
+            }
             return bookings;
         } catch (SQLException e) {
             throw new RepositoryException(e);
@@ -83,7 +90,7 @@ public class JDBCRepository implements IRepository {
         return new Room(rs.getInt("roomid"), rs.getInt("size"), rs.getString("name"));
     }
     private Booking rsBookings(ResultSet rs) throws SQLException {
-        return new Booking(rs.getInt("BookingID"), rs.getDate("StartTime"), rs.getDate("EndTime"), rs.getInt("Room_ID"), rs.getInt("User_ID"));
+        return new Booking(rs.getInt("BookingID"), rs.getTimestamp("StartTime"), rs.getTimestamp("EndTime"), rs.getInt("Room_ID"), rs.getInt("User_ID"));
     }
     private Person rsPerson(ResultSet rs) throws SQLException {
         return new Person(rs.getInt("PersonID"), rs.getString("FirstName"), rs.getString("LastName"));

@@ -3,15 +3,18 @@ body {
   background-repeat: repeat-x;
 }
 
-
-// Ytor
-
 .row {
   max-width: 75%;
 }
 
 #menuHeader {
   height: 121px;
+}
+
+#menuHeader,
+#menuHeader > div:first-child,
+#logoContainer {
+  padding-left: 0px;
 }
 
 #menuHeader div,
@@ -21,38 +24,70 @@ body {
 
 #logoContainer img {
   margin-top: 10px;
+  margin-left: -4px;
 }
 
 #topMenu {
   list-style-type: none;
+  margin: 0 0 0 -32px;
 }
 
 #topMenu li {
   display: inline-block;
-  margin-top: 45px;
+  margin-top: 27px;
+  margin-right: 3%;
 }
 
 #bookingArea {
   background-color: rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  padding: 0 10px;
 }
 
-#bookingArea div:first-child {
+#bookingArea > div:first-child {
   margin-top: 10px;
 }
 
-#bookingArea>div {
+#bookingArea > div {
   margin-bottom: 10px;
   padding: 0px;
-  height: 86px;
+  height: 60px;
   background-color: #999999;
 }
 
-.hourFrame {
-  background-color: red;
+#topMenu > li > a {
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px;
+  padding: 5px;
+  color: #333333;
+  text-shadow: 1px 1px 1px white;
 }
 
-// Typografi
+#topMenu > li > a:hover {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
 
-a {
+#hourList {
+  list-style-type: none;
+  margin: 20px 0px;
+  padding: 0px;
+}
+
+.hour {
+  display: inline-block;
+  margin-left: -0.05%;
+  padding: 0px;
   font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.booking {
+  display: inline-block;
+  background-color: red;
+  height: 100%;
+  margin-left: 16.666%;
+  margin-right: 0px;
+  width: 16.666%
 }
