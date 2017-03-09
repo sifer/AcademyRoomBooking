@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <h1>Login</h1>
+
+<p th:id="error" th:text="${error}"></p>
+
 <form  action="login" method="post" >
     Username: <br/>
     <input type="text" name="username" value=""/>

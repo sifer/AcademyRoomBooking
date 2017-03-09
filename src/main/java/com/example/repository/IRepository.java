@@ -1,5 +1,7 @@
 package com.example.repository;
 
+import com.example.domain.Booking;
+import com.example.domain.Person;
 import com.example.domain.Room;
 import com.example.domain.User;
 
@@ -11,4 +13,6 @@ import java.util.List;
 public interface IRepository {
     List<Room> getRooms();
     List<User> getUsers();
+    List<Booking> getBookings();
+    List<Person> getPersons();
 }
