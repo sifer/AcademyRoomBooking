@@ -33,6 +33,12 @@ public class CustomController {
     @Autowired
     DataSource dataSource;
 
+    @GetMapping("/foundation")
+    public ModelAndView foundation() {
+        ModelAndView mModel = new ModelAndView("booking/index");
+        return mModel;
+    }
+
     @GetMapping("/booking/")
     public ModelAndView modelSec() {
         ModelAndView mModel = new ModelAndView("booking/weekview")
