@@ -2,3 +2,9 @@ body {
     background-color: floralwhite;
     color:darkblue;
 }
+
+#test {
+    background-color: green;
+    width: 200px;
+    height: 200px;
+}

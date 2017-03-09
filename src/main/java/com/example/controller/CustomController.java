@@ -35,7 +35,8 @@ public class CustomController {
 
     @GetMapping("/booking/")
     public ModelAndView modelSec() {
-        ModelAndView mModel = new ModelAndView("booking/weekview");
+        ModelAndView mModel = new ModelAndView("booking/weekview")
+                .addObject("rooms", repository.getRooms());
         return mModel;
     }
 

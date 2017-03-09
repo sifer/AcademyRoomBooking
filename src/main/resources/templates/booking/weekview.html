@@ -6,7 +6,19 @@
     <link rel="stylesheet" type="text/css" href="css/weekview.css" th:href="@{/css/weekview.css}"/>
 </head>
 <body>
-<h1>[WEEK VIEW]</h1>
+<h2>Rooms:</h2>
+
+<select th:id="roomname" onchange="changedRoom()">
+    <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name}"></option>
+</select>
+<select th:id="roomsize" onchange="changedSize()">
+    <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.size}"></option>
+</select>
+
+<div th:id="testdiv"></div>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}" />
+<script type="text/javascript" th:src="@{/js/jquery-ui.js}" />
 <script type="text/javascript" th:src="@{/js/weekview.js}" />
 </body>
 </html>
