@@ -5,14 +5,10 @@ package com.example.domain;
  */
 public class User {
     private int id;
-    private String username;
-    private String password;
     private int Person_ID;
 
-    public User(int id, String username, String password, int person_ID) {
+    public User(int id, int person_ID) {
         this.id = id;
-        this.username = username;
-        this.password = password;
         Person_ID = person_ID;
     }
 

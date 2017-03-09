@@ -41,7 +41,7 @@ public class JDBCRepository implements IRepository {
     public ArrayList<User> getUsers() {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT UserID, Password FROM User")) {
+             ResultSet rs = stmt.executeQuery("SELECT UserID, Person_ID FROM [User]")) {
             ArrayList<User> users = new ArrayList<>();
             while (rs.next()) users.add(rsUser(rs));
             return users;
@@ -54,7 +54,7 @@ public class JDBCRepository implements IRepository {
     public ArrayList<Booking> getBookings() {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT UserID, Password FROM User")) {
+             ResultSet rs = stmt.executeQuery("SELECT BookingID, StartTime, EndTime, Room_ID, User_ID FROM Booking")) {
             ArrayList<Booking> bookings = new ArrayList<>();
             while (rs.next()) bookings.add(rsBookings(rs));
             return bookings;
@@ -67,7 +67,7 @@ public class JDBCRepository implements IRepository {
     public ArrayList<Person> getPersons() {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT UserID, Password FROM User")) {
+             ResultSet rs = stmt.executeQuery("SELECT PersonID, FirstName, LastName FROM Person")) {
             ArrayList<Person> persons = new ArrayList<>();
             while (rs.next()) persons.add(rsPerson(rs));
             return persons;
@@ -77,10 +77,8 @@ public class JDBCRepository implements IRepository {
     }
 
     private User rsUser(ResultSet rs) throws SQLException{
-        return new User(rs.getInt("userid"), rs.getString("UserName"), rs.getString("Password"), rs.getInt("Person_ID"));
+        return new User(rs.getInt("userid"), rs.getInt("Person_ID"));
     }
-
-
     private Room rsRoom(ResultSet rs) throws SQLException {
         return new Room(rs.getInt("roomid"), rs.getInt("size"), rs.getString("name"));
     }
