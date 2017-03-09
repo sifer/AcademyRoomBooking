@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Academy Room Booking</title>
+</head>
+<body>
+<ul style="list-style-type: none">
+    <h2>Rooms</h2>
+    <li th:each="room : ${rooms}">
+        <h3 th:text="${room.name}"></h3>
+        <p th:text="'Room id: ' + ${room.id}"></p>
+        <p th:text="'Room size: ' + ${room.size}"></p>
+    </li>
+</ul>
+</body>
+</html>
+
+
