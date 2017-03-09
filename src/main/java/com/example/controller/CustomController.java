@@ -29,8 +29,15 @@ public class CustomController {
 
     @Autowired
     private IRepository repository;
+
     @Autowired
     DataSource dataSource;
+
+    @GetMapping("/booking/")
+    public ModelAndView modelSec() {
+        ModelAndView mModel = new ModelAndView("booking/weekview");
+        return mModel;
+    }
 
     @GetMapping("/login/login")
     public void loginPage(){
@@ -76,43 +83,5 @@ public class CustomController {
         ArrayList<Room> rooms = (ArrayList<Room>) repository.getRooms();
         return new ModelAndView("room/index")
                 .addObject("rooms", rooms);
-    }
-
-    @GetMapping("/folderTestModel")
-    public ModelAndView model() {
-        //static folder
-        ModelAndView mModel = new ModelAndView("redirect:placeholder.html").addObject("text", "hello");
-        return mModel;
-    }
-
-    @GetMapping("/folderTestString")
-    public String string() {
-        // static folder
-        return "redirect:placeholder.html";
-    }
-
-    ///////////////////////
-
-    @GetMapping("/folderTestModelSec")
-    public ModelAndView modelSec() {
-        //ERROR ModelAndView mModel = new ModelAndView("placeholder.html");
-        ModelAndView mModel = new ModelAndView("placeholder");
-        return mModel;
-    }
-
-    @GetMapping("/folderTestStringSec")
-    public String stringSec() {
-        //ERROR return "placeholder.html";
-        return "placeholder";
-    }
-
-
-    @GetMapping("test/placeholder")
-    public void test() {
-    }
-
-    @GetMapping("/test/")
-    public ModelAndView listBlogs() {
-        return new ModelAndView("/test/placeholder");
     }
 }
