@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import com.example.Methods.Encryptor;
+import com.example.domain.Booking;
+import com.example.domain.Person;
 import com.example.domain.Room;
 import com.example.domain.User;
 import com.example.repository.IRepository;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +29,28 @@ import java.util.ArrayList;
  */
 @Controller
 public class CustomController {
+
+    ArrayList<Room> rooms;
+    ArrayList<User> users;
+    ArrayList<Person> persons;
+    ArrayList<Booking> bookings;
+
+    @PostConstruct
+    public void RefreshRooms(){
+        rooms = (ArrayList<Room>) repository.getRooms();
+    }
+    @PostConstruct
+    public void RefreshUsers(){
+        users = (ArrayList<User>) repository.getUsers();
+    }
+    @PostConstruct
+    public void RefreshBookings(){
+        bookings = (ArrayList<Booking>) repository.getBookings();
+    }
+    @PostConstruct
+    public void RefreshPersons(){
+        persons = (ArrayList<Person>) repository.getPersons();
+    }
 
     @Autowired
     private IRepository repository;
@@ -87,7 +112,6 @@ public class CustomController {
 
     @GetMapping("/room/")
     public ModelAndView listRooms() {
-        ArrayList<Room> rooms = (ArrayList<Room>) repository.getRooms();
         return new ModelAndView("room/index")
                 .addObject("rooms", rooms);
     }
