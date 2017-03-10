@@ -15,6 +15,7 @@ public class Booking {
     private Timestamp EndTime;
     private double differenceMinutes;
     private int dayOfWeek;
+    private String stringDayOfWeek;
     private int weekOfYear;
     private double fixedMargin;
     private int Room_ID;
@@ -32,7 +33,33 @@ public class Booking {
         fixedMargin = (cal.get((Calendar.HOUR_OF_DAY))*60-(8*60))+((cal.get(Calendar.MINUTE)));
         Room_ID = room_ID;
         User_ID = user_ID;
-    }
+
+        switch(dayOfWeek){
+            case 1:
+                stringDayOfWeek="Sunday";
+                break;
+            case 2:
+                stringDayOfWeek="Monday";
+                break;
+            case 3:
+                stringDayOfWeek="Tuesday";
+                break;
+            case 4:
+                stringDayOfWeek="Wednesday";
+                break;
+            case 5:
+                stringDayOfWeek="Thursday";
+                break;
+            case 6:
+                stringDayOfWeek="Friday";
+                break;
+            case 7:
+                stringDayOfWeek="Saturday";
+                break;
+        }
+
+        }
+
 
     public int getBookingID() {
         return BookingID;
@@ -72,4 +99,9 @@ public class Booking {
     public void setFixedMargin(double fixedMargin) {
         this.fixedMargin = fixedMargin;
     }
+
+    public String getStringDayOfWeek() {
+        return stringDayOfWeek;
+    }
+
 }

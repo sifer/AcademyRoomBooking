@@ -102,7 +102,7 @@ public class CustomController {
             if (userNameChecked != null && passwordChecked != null & userNameChecked.trim().equalsIgnoreCase(username) && passwordChecked.equalsIgnoreCase(passwordEncrypted)) {
                 //TODO Return booking-page
                 System.out.println("correct pass");
-                return new ModelAndView("/booking/index");
+                return new ModelAndView("/booking");
             } else {
                 //TODO Return login try-again
                 System.out.println("wrong login");

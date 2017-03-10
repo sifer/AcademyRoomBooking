@@ -45,14 +45,27 @@
 
 <div class="row">
   <div id="bookingArea" class="large-12 columns">
-    <div id="monday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '2'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="tuesday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '3'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="wednesday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '4'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="thursday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '5'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="friday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '6'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="saturday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '7'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="sunday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '1'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
+    <div id="monday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '2'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+    <div id="tuesday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '3'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+    <div id="wednesday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '4'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+    <div id="thursday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '5'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+    <div id="friday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '6'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+    <div id="saturday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '7'" th:attr="data-open=${('reveal'+index.BookingID)}}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+    <div id="sunday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '1'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+
   </div>
+</div>
+<div th:each="index : ${bookings}" class="reveal" th:attr="id=${('reveal'+index.BookingID)}" data-reveal="data-reveal">
+    <h1>Booking</h1>
+  <p class="lead" th:text="${('Weekday: '+index.stringDayOfWeek)}"></p>
+  <p class="lead" th:text="${('Starting time: '+index.StartTime)}"></p>
+    <p class="lead" th:text="${('Ending time: '+index.EndTime)}"></p>
+    <p class="lead" th:text="${('Duration: '+index.differenceMinutes+' minutes')}"></p>
+    <p class="lead" th:text="${('Booker: '+index.User_ID)}"></p>
+
+    <button class="close-button" data-close="data-close" aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 <script src="js/vendor/jquery.js"></script>
