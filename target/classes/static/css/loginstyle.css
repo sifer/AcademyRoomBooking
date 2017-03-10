@@ -1,9 +1,53 @@
+#error {
+    color: red;
+}
+
 body {
     background-image: url("http://images.adsttc.com/media/images/5525/6d5e/e58e/cecd/8200/006d/large_jpg/03.jpg");
 }
 
+h1, h2 {
+    font-family: 'Noto Serif', serif;
+    font-weight: normal;
+}
+
+p {
+    font-family: 'Dosis', sans-serif;
+}
+
+#usr, #psw {
+    margin: 0;
+    padding: 0;
+}
+
+input[type=submit] {
+    background-color: #AAAAAA;
+    font-family: 'Dosis', sans-serif;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .inputbox {
-    border: 1px solid rgba(0,0,0, 1);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #808080;
+
+    /*
+    boder: 50px solid rgb(130,130,130);
+
+    border-width: 10px;
+    border-style: solid;
+    border-color: #C3C3C3;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+    */
+
 }
 
 .parent {
@@ -32,6 +76,7 @@ body {
 
 .child {
     color:white;
+    background-color: #999999;
 }
 
 #vertical-row {
@@ -43,14 +88,12 @@ body {
 }
 
 #left {
-    background-color: gray;
     width: 5%;
     flex: 1.5;
     padding: 25px;
 }
 
 #right {
-    background-color: darkgray;
     width: 50%;
     flex: 3;
     padding: 25px;
