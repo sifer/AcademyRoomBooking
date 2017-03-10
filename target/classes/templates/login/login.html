@@ -1,35 +1,51 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/loginstyle.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/resetCss.css}"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Academy Room Booking</title>
     <link href="https://fonts.googleapis.com/css?family=Dosis|Noto+Serif" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/foundation.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/app.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/loginstyle.css}"/>
 </head>
 <body>
-
-<div th:class="parent">
-        <div th:class="child" th:id="left">
-            <h1>Logga in</h1>
-
-            <p th:id="error" th:text="${error}"></p>
-
-            <form  action="login" method="post" >
-                <p id="usr">Användarnamn</p>
-                <input th:class="inputbox" type="text" name="username" value=""/>
-                <br/>
-                <p id="psw">Lösenord</p>
-                <input th:class="inputbox" type="password" name="password" value=""/>
-                <br/>
-                <input type="submit" value="submit"/>
-            </form>
+<div class="row" id="menuHeader">
+    <div class="large-12 columns">
+        <div class="large-3 columns" id="logoContainer">
+            <a href="#"><img src="/img/logo.png" alt="Academy logotype"/></a>
         </div>
-        <div th:class="child" th:id="vertical-row"></div>
-        <div th:class="child" th:id="right">
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dignissim scelerisque ipsum sit amet gravida. Aenean porttitor porta tortor, nec blandit enim convallis ut. Praesent auctor ante ligula, eget ultricies neque imperdiet in. Pellentesque tempus dui vitae metus dapibus rutrum. Nullam lacus purus, mollis ut metus id, fermentum auctor lectus. Aliquam accumsan purus nisl, sit amet convallis dui finibus sit amet. Praesent suscipit dui ac massa interdum facilisis et eget orci. Quisque sed venenatis turpis. Quisque faucibus lacus vitae dolor blandit vehicula.</p>
-        </div>
+    </div>
 </div>
 
+<div th:class="parent">
+    <div th:class="child" th:id="left">
+        <h1>Logga in</h1>
+
+        <p th:id="error" th:text="${error}"></p>
+
+        <form  action="login" method="post" >
+            <p id="usr">Användarnamn</p>
+            <input th:class="inputbox" type="text" name="username" value=""/>
+            <br/>
+            <p id="psw">Lösenord</p>
+            <input th:class="inputbox" type="password" name="password" value=""/>
+            <br/>
+            <input type="submit" value="submit"/>
+        </form>
+    </div>
+    <div th:class="child" th:id="vertical-row"></div>
+    <div th:class="child" th:id="right">
+        <h2>Lorem Ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dignissim scelerisque ipsum sit amet gravida. Aenean porttitor porta tortor, nec blandit enim convallis ut. Praesent auctor ante ligula, eget ultricies neque imperdiet in. Pellentesque tempus dui vitae metus dapibus rutrum. Nullam lacus purus, mollis ut metus id, fermentum auctor lectus. Aliquam accumsan purus nisl, sit amet convallis dui finibus sit amet. Praesent suscipit dui ac massa interdum facilisis et eget orci. Quisque sed venenatis turpis. Quisque faucibus lacus vitae dolor blandit vehicula.</p>
+    </div>
+</div>
+
+<script src="@(js/vendor/jquery.js)"></script>
+<script src="@(js/vendor/what-input.js)"></script>
+<script src="@(js/vendor/foundation.js)"></script>
+<script src="@(js/app.js)"></script>
 </body>
 </html>

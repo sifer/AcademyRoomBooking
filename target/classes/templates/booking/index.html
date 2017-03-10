@@ -1,63 +1,89 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" href="css/resetCss.css"/>
-  <meta charset="utf-8"/>
-  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Foundation for Sites</title>
-  <link href="https://fonts.googleapis.com/css?family=Dosis|Noto+Serif" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/foundation.css"/>
-  <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/resetCss.css}"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Academy Room Booking</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Noto+Serif" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/foundation.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/app.css}"/>
 </head>
 <body>
 <div class="row" id="menuHeader">
-  <div class="large-12 columns">
-    <div class="large-3 columns" id="logoContainer">
-      <a href="#"><img src="img/logo.png" alt="Academy logotype" /></a>
+    <div class="large-12 columns">
+        <div class="large-3 columns" id="logoContainer">
+            <a href="#"><img src="/img/logo.png" alt="Academy logotype"/></a>
+        </div>
+        <ul class="large-4 columns" id="topMenu">
+            <li><a href="#">Lorem</a></li>
+            <li><a href="#">Ipsum</a></li>
+            <li><a href="/logout">Logga ut</a></li>
+        </ul>
+        <div class="large-4 columns">
+            <ul id="rightMenu">
+                <li>
+                    <a href="#">Vecka 24</a>
+                </li>
+                <li>
+                    <a href="#">Rum 7</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <ul class="large-6 columns" id="topMenu">
-      <li><a href="#">Lorem</a></li>
-      <li><a href="#">Ipsum</a></li>
-      <li><a href="#">Dolores</a></li>
+</div>
+
+<div class="row">
+    <ul id="hourList" class="large-12 columns">
+        <li class="hour large-1 column">08</li>
+        <li class="hour large-1 column">09</li>
+        <li class="hour large-1 column">10</li>
+        <li class="hour large-1 column">11</li>
+        <li class="hour large-1 column">12</li>
+        <li class="hour large-1 column">13</li>
+        <li class="hour large-1 column">14</li>
+        <li class="hour large-1 column">15</li>
+        <li class="hour large-1 column">16</li>
+        <li class="hour large-1 column">17</li>
+        <li class="hour large-1 column">18</li>
+        <li class="hour large-1 column">19</li>
     </ul>
-    <div class="large-3 columns">
+</div>
+
+<div class="row">
+    <div id="bookingArea" class="large-12 columns">
+        <div id="monday" class="large-12 columns day">
+            <p>Måndag</p>
+            <div class="booking red"></div>
+            <div class="booking green"></div>
+            <div class="clearLeft"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+        </div>
+        <div id="tuesday" class="large-12 columns day">
+            <p>Tisdag</p>
+        </div>
+        <div id="wednesday" class="large-12 columns day">
+            <p>Onsdag</p>
+        </div>
+        <div id="thursday" class="large-12 columns day">
+            <p>Torsdag</p>
+        </div>
+        <div id="friday" class="large-12 columns day">
+            <p>Fredag</p>
+        </div>
+        <div id="saturday" class="large-12 columns day">
+            <p>Lördag</p>
+        </div>
+        <div id="sunday" class="large-12 columns day">
+            <p>Söndag</p>
+        </div>
     </div>
-  </div>
 </div>
 
-<div class="row">
-  <ul id="hourList" class="large-12 columns">
-    <li class="hour large-1 column">08</li>
-    <li class="hour large-1 column">09</li>
-    <li class="hour large-1 column">10</li>
-    <li class="hour large-1 column">11</li>
-    <li class="hour large-1 column">12</li>
-    <li class="hour large-1 column">13</li>
-    <li class="hour large-1 column">14</li>
-    <li class="hour large-1 column">15</li>
-    <li class="hour large-1 column">16</li>
-    <li class="hour large-1 column">17</li>
-    <li class="hour large-1 column">18</li>
-    <li class="hour large-1 column">19</li>
-  </ul>
-</div>
-
-<div class="row">
-  <div id="bookingArea" class="large-12 columns">
-    <div id="monday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '2'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="tuesday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '3'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="wednesday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '4'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="thursday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '5'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="friday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '6'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="saturday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '7'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-    <div id="sunday" class="large-12 columns"><div class="booking" th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '1'" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></div>
-  </div>
-</div>
-
-<script src="js/vendor/jquery.js"></script>
-<script src="js/vendor/what-input.js"></script>
-<script src="js/vendor/foundation.js"></script>
-<script src="js/app.js"></script>
+<script src="@(js/vendor/jquery.js)"></script>
+<script src="@(js/vendor/what-input.js)"></script>
+<script src="@(js/vendor/foundation.js)"></script>
+<script src="@(js/app.js)"></script>
 </body>
 </html>

@@ -3,18 +3,16 @@ body {
   background-repeat: repeat-x;
 }
 
+.columns, .column {
+    padding: 0px;
+}
+
 .row {
   max-width: 75%;
 }
 
 #menuHeader {
   height: 121px;
-}
-
-#menuHeader,
-#menuHeader > div:first-child,
-#logoContainer {
-  padding-left: 0px;
 }
 
 #menuHeader div,
@@ -27,15 +25,38 @@ body {
   margin-left: -4px;
 }
 
-#topMenu {
+#topMenu, #rightMenu {
   list-style-type: none;
-  margin: 0 0 0 -32px;
+  margin: 0px;
 }
 
 #topMenu li {
   display: inline-block;
   margin-top: 27px;
   margin-right: 3%;
+}
+
+#rightMenu {
+  text-align: right;
+}
+
+#rightMenu li {
+  display: inline-block;
+}
+
+#rightMenu li a {
+  background-color: #8e8e8e;
+  padding: 5px 40px;
+  border-radius: 10px 10px 0 0;
+  margin-top: 68px;
+  display: inline-block;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+#rightMenu li:first-child a {
+  background-color: #636363;
 }
 
 #bookingArea {
@@ -56,7 +77,6 @@ body {
 }
 
 #topMenu > li > a {
-  font-family: 'Dosis', sans-serif;
   font-size: 30px;
   padding: 5px;
   color: #333333;
@@ -74,6 +94,20 @@ body {
   padding: 0px;
 }
 
+.day {
+  position: relative;
+}
+
+.day > p {
+  position: absolute;
+  z-index: 1;
+  margin-left: -100px;
+  margin-top: 7px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .hour {
   display: inline-block;
   margin-left: -0.05%;
@@ -83,11 +117,40 @@ body {
   font-size: 24px;
 }
 
+.thirtyMinuteMark {
+  height: 60px;
+  width: 8.333%;
+  background-color: #999999;
+  border-right: 1px solid #eeeeee;
+  position: absolute;
+  display: inline-block;
+  z-index: 1;
+  top: 0px;
+}
+
 .booking {
   display: inline-block;
-  background-color: red;
+  opacity: 0.7;
   height: 100%;
   margin-left: 16.666%;
   margin-right: 0px;
   width: 16.666%
+}
+
+.red {
+  background-color: red;
+  border: 3px solid #880000;
+}
+
+.green {
+  background-color: green;
+  border: 3px solid #005500;
+}
+
+#menuHeader a {
+  font-family: 'Dosis', sans-serif;
+}
+
+.clearLeft {
+  clear: left;
 }

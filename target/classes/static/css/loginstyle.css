@@ -2,17 +2,20 @@
     color: red;
 }
 
-body {
-    background-image: url("http://images.adsttc.com/media/images/5525/6d5e/e58e/cecd/8200/006d/large_jpg/03.jpg");
-}
-
 h1, h2 {
     font-family: 'Noto Serif', serif;
     font-weight: normal;
 }
 
+h1 {
+    font-size: 150%;
+}
+h2 {
+    font-size: 100%;
+}
 p {
     font-family: 'Dosis', sans-serif;
+    font-size: 80%;
 }
 
 #usr, #psw {
@@ -35,19 +38,6 @@ input[type=submit] {
     border-width: 3px;
     border-style: solid;
     border-color: #808080;
-
-    /*
-    boder: 50px solid rgb(130,130,130);
-
-    border-width: 10px;
-    border-style: solid;
-    border-color: #C3C3C3;
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    padding: 3px 0px 3px 3px;
-    margin: 5px 1px 3px 0px;
-    border: 1px solid rgba(81, 203, 238, 1);
-    */
-
 }
 
 .parent {
@@ -61,7 +51,7 @@ input[type=submit] {
     height: auto;
     margin: 0 auto;
     padding: 10px;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.12);
     /*
     background-color: gray;
     border: 20px groove rgba(0,0,0,0.25);
