@@ -86,7 +86,7 @@ public class CustomController {
     }
 
     @GetMapping("/login/login")
-    public void loginPage() { return;}
+    public String loginPage() { return "/Login/login";}
 
     @PostMapping("/login/login")
     public ModelAndView loginPage(HttpSession session, String username, String password) throws SQLException {
