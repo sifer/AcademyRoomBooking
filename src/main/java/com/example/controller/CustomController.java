@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,41 +74,49 @@ public class CustomController {
         return mModel;
     }
 
-    /*
-    @GetMapping("/login")
-    public ModelAndView loginPage() {
-        return new ModelAndView("/login/login");
+    @GetMapping("/logout")
+    public String logout(HttpSession session, HttpServletResponse res) {
+        session.invalidate();
+        Cookie cookie = new Cookie("jsessionid", "");
+        cookie.setMaxAge(0);
+        res.addCookie(cookie);
+        return "redirect:/login/login";
     }
-    */
 
     @GetMapping("/login/login")
     public void loginPage() { return;}
 
     @PostMapping("/login/login")
-    public ModelAndView loginPage(String username, String password) throws SQLException {
+    public ModelAndView loginPage(HttpSession session, String username, String password) throws SQLException {
+        if (session.getAttribute("user") != null) {
+            return new ModelAndView("/booking/index");
+        }
+
         ModelAndView model;
         try {
             Encryptor encryptor = new Encryptor();
             String passwordEncrypted = encryptor.MD5(password);
             Connection conn = dataSource.getConnection();
-            PreparedStatement preparedStatement = conn.prepareStatement("SELECT UserName, [Password] FROM [User] WHERE UserName = ? AND [Password]=?");
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT UserID, UserName, [Password] FROM [User] WHERE UserName = ? AND [Password]=?");
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, passwordEncrypted);
             ResultSet rs = preparedStatement.executeQuery();
             String userNameChecked = null;
             String passwordChecked = null;
+            int userId = 0;
             while (rs.next()) {
                 userNameChecked = rs.getString("UserName");
                 passwordChecked = rs.getString("Password");
+                userId = rs.getInt("UserID");
             }
 
             if (userNameChecked != null && passwordChecked != null & userNameChecked.trim().equalsIgnoreCase(username) && passwordChecked.equalsIgnoreCase(passwordEncrypted)) {
                 //TODO Return booking-page
-                System.out.println("correct pass");
-                return new ModelAndView("/booking");
+
+                session.setAttribute("user", username);
+                session.setAttribute("userid", userId);
+                return new ModelAndView("/booking/index").addObject("bookings", bookings);
             } else {
-                //TODO Return login try-again
-                System.out.println("wrong login");
                 return new ModelAndView("/login/login").addObject("error", "Wrong username or password.");
             }
 

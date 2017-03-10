@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/loginstyle.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Noto+Serif" rel="stylesheet"/>
+</head>
+<body>
+
+<div th:class="parent">
+        <div th:class="child" th:id="left">
+            <h1>Logga in</h1>
+
+            <p th:id="error" th:text="${error}"></p>
+
+            <form  action="login" method="post" >
+                <p id="usr">Användarnamn</p>
+                <input th:class="inputbox" type="text" name="username" value=""/>
+                <br/>
+                <p id="psw">Lösenord</p>
+                <input th:class="inputbox" type="password" name="password" value=""/>
+                <br/>
+                <input type="submit" value="submit"/>
+            </form>
+        </div>
+        <div th:class="child" th:id="vertical-row"></div>
+        <div th:class="child" th:id="right">
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dignissim scelerisque ipsum sit amet gravida. Aenean porttitor porta tortor, nec blandit enim convallis ut. Praesent auctor ante ligula, eget ultricies neque imperdiet in. Pellentesque tempus dui vitae metus dapibus rutrum. Nullam lacus purus, mollis ut metus id, fermentum auctor lectus. Aliquam accumsan purus nisl, sit amet convallis dui finibus sit amet. Praesent suscipit dui ac massa interdum facilisis et eget orci. Quisque sed venenatis turpis. Quisque faucibus lacus vitae dolor blandit vehicula.</p>
+        </div>
+</div>
+
+</body>
+</html>
