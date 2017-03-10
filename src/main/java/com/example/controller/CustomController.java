@@ -86,7 +86,7 @@ public class CustomController {
     }
 
     @GetMapping("/login/login")
-    public void loginPage() { return;}
+    public String loginPage() { return "/Login/login";}
 
     @PostMapping("/login/login")
     public ModelAndView loginPage(HttpSession session, String username, String password) throws SQLException {
@@ -114,9 +114,10 @@ public class CustomController {
 
             if (userNameChecked != null && passwordChecked != null & userNameChecked.trim().equalsIgnoreCase(username) && passwordChecked.equalsIgnoreCase(passwordEncrypted)) {
                 //TODO Return booking-page
+
                 session.setAttribute("user", username);
                 session.setAttribute("userid", userId);
-                return new ModelAndView("/booking/index");
+                return new ModelAndView("/booking/index").addObject("bookings", bookings);
             } else {
                 return new ModelAndView("/login/login").addObject("error", "Wrong username or password.");
             }
