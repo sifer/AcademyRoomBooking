@@ -61,10 +61,12 @@ public class CustomController {
     @Autowired
     DataSource dataSource;
 
-    @GetMapping("/booking")
-    public ModelAndView foundation() {
-        ModelAndView mModel = new ModelAndView("booking/index").addObject("bookings", bookings);
-        return mModel;
+    @GetMapping("/booking/index")
+    public ModelAndView foundation(HttpSession session) {
+        if (session.getAttribute("user") != null) {
+            return new ModelAndView("booking/index").addObject("bookings", bookings);
+        }
+        return new ModelAndView("login/login");
     }
 
     @GetMapping("/sandbox")
