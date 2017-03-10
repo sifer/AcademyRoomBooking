@@ -26,14 +26,14 @@
 
         <p th:id="error" th:text="${error}"></p>
 
-        <form  action="login" method="post" >
+        <form  action="login" method="post">
             <p id="usr">Användarnamn</p>
             <input th:class="inputbox" type="text" name="username" value=""/>
             <br/>
             <p id="psw">Lösenord</p>
             <input th:class="inputbox" type="password" name="password" value=""/>
             <br/>
-            <input type="submit" value="submit"/>
+            <input type="submit" value="Logga in"/>
         </form>
     </div>
     <div th:class="child" th:id="vertical-row"></div>

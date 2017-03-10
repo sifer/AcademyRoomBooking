@@ -7,28 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Academy Room Booking</title>
     <link href="https://fonts.googleapis.com/css?family=Dosis|Noto+Serif" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/foundation.css}"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/app.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/foundation.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}"/>
 </head>
-<body>
-<div class="row" id="menuHeader">
+<body><div class="row" id="menuHeader">
     <div class="large-12 columns">
         <div class="large-3 columns" id="logoContainer">
-            <a href="#"><img src="/img/logo.png" alt="Academy logotype"/></a>
+            <a href="#"><img src="/img/logo.png" alt="Academy logotype" /></a>
         </div>
-        <ul class="large-4 columns" id="topMenu">
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Ipsum</a></li>
+        <ul class="large-2 columns" id="topMenu">
             <li><a href="/logout">Logga ut</a></li>
         </ul>
-        <div class="large-4 columns">
+        <div class="large-6 columns">
             <ul id="rightMenu">
                 <li>
-                    <a href="#">Vecka 24</a>
-                </li>
-                <li>
-                    <a href="#">Rum 7</a>
-                </li>
+                    <img class="curved" src="/img/curved1.png" alt="curved corner" /><a href="#">Vecka 24</a><img class="curved" src="/img/curved2.png" alt="curved corner" />
+                </li><li><a href="#">Rum 7</a><img class="curved" src="/img/curved3.png" alt="curved corner" /></li>
             </ul>
         </div>
     </div>
@@ -53,13 +47,124 @@
 
 <div class="row">
     <div id="bookingArea" class="large-12 columns">
-        <div id="monday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '2'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Måndag</p></div>
-        <div id="tuesday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '3'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Tisdag</p></div>
-        <div id="wednesday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '4'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Onsdag</p></div>
-        <div id="thursday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '5'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Torsdag</p></div>
-        <div id="friday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '6'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Fredag</p></div>
-        <div id="saturday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '7'" th:attr="data-open=${('reveal'+index.BookingID)}}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Lördag</p></div>
-        <div id="sunday" class="large-12 columns"><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '1'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a><p class="dayName">Söndag</p></div>
+        <div id="monday" class="large-12 columns day" style="font-size:0">
+            <p class="dayName">Måndag</p>
+            <div class="marksContainer large-12 columns">
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+            <div class="thirtyMinuteMark large-1 column"></div>
+        </div><a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '2'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking red" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+        <div id="tuesday" class="large-12 columns day"  style="font-size:0">
+            <p class="dayName">Tisdag</p>
+            <div class="marksContainer large-12 columns">
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+            </div>
+            <a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '3'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking red" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+        <div id="wednesday" class="large-12 columns day"  style="font-size:0">
+            <p class="dayName">Onsdag</p>
+            <div class="marksContainer large-12 columns">
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+            </div>
+            <a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '4'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking green" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+        <div id="thursday" class="large-12 columns day"  style="font-size:0">
+            <p class="dayName">Torsdag</p>
+            <div class="marksContainer large-12 columns">
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+            </div>
+            <a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '5'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking red" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+        <div id="friday" class="large-12 columns day" style="font-size:0">
+            <p class="dayName">Fredag</p>
+            <div class="marksContainer large-12 columns">
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+            </div>
+            <a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '6'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking red" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+        <div id="saturday" class="large-12 columns day"  style="font-size:0">
+            <p class="dayName">Lördag</p>
+            <div class="marksContainer large-12 columns">
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+            </div>
+            <a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '7'" th:attr="data-open=${('reveal'+index.BookingID)}}"><div class="booking red" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
+        <div id="sunday" class="large-12 columns day"  style="font-size:0">
+            <p class="dayName">Söndag</p>
+            <div class="marksContainer large-12 columns">
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+                <div class="thirtyMinuteMark large-1 column"></div>
+            </div>
+            <a th:each="index : ${bookings}" th:if="${index.dayOfWeek} == '1'" th:attr="data-open=${('reveal'+index.BookingID)}"><div class="booking red" th:style="'margin-left:'+ ${(index.fixedMargin)*100 / (720)} +'%; width:'+${(index.differenceMinutes)*100 / (720)}+'%'"/></a></div>
     </div>
 </div>
 <div th:each="index : ${bookings}" class="reveal" th:attr="id=${('reveal'+index.BookingID)}" data-reveal="data-reveal">
