@@ -77,12 +77,12 @@ public class CustomController {
     }
 
     @GetMapping("/logout")
-    public ModelAndView logout(HttpSession session, HttpServletResponse res) {
+    public String logout(HttpSession session, HttpServletResponse res) {
         session.invalidate();
         Cookie cookie = new Cookie("jsessionid", "");
         cookie.setMaxAge(0);
         res.addCookie(cookie);
-        return new ModelAndView("/login/login");
+        return "redirect:/login/login";
     }
 
     @GetMapping("/login/login")
